@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+  
+
+<mapper namespace="com.lovo.resourcesystem.dao.CashStatementDao">
+<resultMap type="cashStatementEntity" id="cashStatementRM">
+		<id property="InventoriesId" column="pk_InventoriesId"></id>
+		<result property="name" column="f_name"/>
+		<result property="phone" column="f_phone"/>
+		<result property="state" column="f_state"/>
+		
+	</resultMap>
+
+
+
+	
+	<select id="cashStatementFinda" resultMap="cashStatementRM">
+		select * from t_cashstatement 
+	</select>
+	
+
+	
+	
+	
+	
+	
+	
+  
+<!--   <select id="getListUser" resultType="powerEntity" >
+    select p.* from t_user u,t_userrole ur,t_role r,t_rolepower rp ,t_power  p 
+    WHERE u.id=ur.userid AND ur.roleid=r.roleId and r.roleId=rp.roleid 
+    AND rp.powerid=p.powerId AND u.id=1
+  </select> -->
+  
+
+  
+</mapper>

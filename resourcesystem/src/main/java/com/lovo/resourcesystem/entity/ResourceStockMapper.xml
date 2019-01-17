@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+
+<mapper namespace="com.lovo.resourcesystem.dao.ResourceStockDao">
+	<resultMap id="resourceStockRM" type="resourceStockEntity">
+		<id property="resourceStocks" column="resourceStocks" />
+		<result property="plateNumber" column="plateNumber" />
+		<result property="state" column="state" />
+	</resultMap>
+
+	<insert id="resourceStockAdd"
+		parameterType="resourceStockEntity">
+		insert into t_ResourceStock values(null,#{plateNumber},#{state})
+	</insert>
+
+	<delete id="resourceStockDelete">
+		delete from t_ResourceStock where resourceStocks = #{resourceStocks}
+	</delete>
+	
+	<select id="resourceStockFind" resultMap="resourceStockRM">
+		select * from t_ResourceStock
+	</select>
+	
+	<select id="resourceStockFind1" resultMap="resourceStockRM">
+		select * from t_ResourceStock where state=#{state} limit #{param3},4 
+	</select>
+	
+	<update id="resourceStockRevise">
+		UPDATE t_resourcestock SET state=#{arg0} WHERE resourceStocks =#{arg1} 
+	</update>
+
+
+
+
+</mapper>
