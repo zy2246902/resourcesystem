@@ -125,11 +125,11 @@
                         <!-- Forms-1 -->
                         <div class="outer-w3-agile col-xl mt-3 mr-xl-3">
                             <h4 class="tittle-w3-agileits mb-4">添加车辆</h4>
-                            <form action="#" method="post">
+                            <form action="" method="post">
                                 <div class="form-group row">
                                     <label for="inputEmail3" class="col-sm-2 col-form-label">车牌</label>
                                     <div class="col-sm-10">
-                                        <input type="email" class="form-control" id="inputEmail3" placeholder="川AXXXXX" required="">
+                                        <input type="email"  name="plateNumber" class="form-control" id="inputEmail3" placeholder="川AXXXXX" required="">
                                     </div>
 
                                     </div>

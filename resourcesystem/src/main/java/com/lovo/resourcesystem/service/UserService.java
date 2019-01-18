@@ -9,7 +9,7 @@ public interface UserService {
 	 * 添加用户
 	 * @param id
 	 */
-	public void userAdd(Integer id);
+	public void userAdd(UserEntity userEntity);
 	
 	/**
 	 * 根据ID删除用户
@@ -21,7 +21,7 @@ public interface UserService {
 	 * 根据ID修改用户
 	 * @param id
 	 */
-	public void userRevise(Integer id);
+	public void userRevise(Integer id,String password);
 	
 	/**
 	 * 展示所有用户

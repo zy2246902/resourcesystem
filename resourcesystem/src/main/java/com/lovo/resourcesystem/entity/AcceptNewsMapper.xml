@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+  
+
+<mapper namespace="com.lovo.resourcesystem.dao.AcceptNewsDao">
+<resultMap type="acceptNewsEntity" id="acceptNewsRM">
+		<id property="id" column="pk_id"></id>
+		<result property="eventName" column="f_eventName"/>
+		<result property="area" column="f_area"/>
+		<result property="level" column="f_level"/>
+		<result property="type" column="f_type"/>
+		<result property="site" column="f_site"/>
+		<result property="numberpeople" column="f_numberpeople"/>
+		<result property="carnumber" column="f_carnumber"/>
+		
+	</resultMap>
+
+
+
+  <insert id="acceptNewsAdd">
+        insert into t_acceptnews (f_eventName,f_area,f_level,f_type,f_site,f_numberpeople,f_carnumber)
+        value(#{eventName},#{area},#{level},#{type},#{site},#{numberpeople},#{carnumber})
+   </insert>
+  
+  
+	
+	<select id="acceptNewsFind" resultMap="acceptNewsRM">
+		select * from t_acceptnews
+	</select>
+	
+	
+
+  
+</mapper>

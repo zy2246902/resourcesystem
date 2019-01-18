@@ -30,12 +30,12 @@
 	<!-- 对转向页面的路径解析。prefix：前缀， suffix：后缀 -->
 	<bean
 		class="org.springframework.web.servlet.view.InternalResourceViewResolver"
-		p:prefix="/jsp/" p:suffix=".jsp" />
+		p:prefix="/z/"   p:suffix=".jsp" />
 
 	<!-- 视图的配置 -->
 	<bean
 		class="org.springframework.web.servlet.view.InternalResourceViewResolver"
-		p:prefix="/page/" p:suffix=".jsp"></bean>
+		p:prefix="/z/" p:suffix=".jsp"></bean>
 	<!-- mvc:annotation-driven使用注解功能 -->
 	<mvc:annotation-driven>
 		<mvc:message-converters

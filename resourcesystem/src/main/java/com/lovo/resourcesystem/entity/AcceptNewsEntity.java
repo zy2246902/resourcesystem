@@ -110,6 +110,13 @@ public class AcceptNewsEntity {
 		this.carnumber = carnumber;
 	}
 
+	@Override
+	public String toString() {
+		return "AcceptNewsEntity [id=" + id + ", eventName=" + eventName + ", area=" + area + ", level=" + level
+				+ ", type=" + type + ", site=" + site + ", numberpeople=" + numberpeople + ", carnumber=" + carnumber
+				+ "]";
+	}
+
 
 
 

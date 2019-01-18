@@ -20,6 +20,50 @@
 
 
     </script>
+    
+     <script src="../js/jquery-2.1.4.js"></script> 
+    
+     <script type="text/javascript">
+ 	$(function() {
+		
+		$.getJSON("../../StockNumber/StockNumber.lovo", {
+			
+		}, findMouseData);
+		
+	
+	});
+ 
+function findMouseData(data) {
+	var $table = $("#table");
+	$table.empty();
+	var head = "<tr><td>人员数量</td><td>车辆数量</td><td>可用人员</td><td>可用车辆</td></tr>";
+	$table.append(head);
+
+	$.each(data, function(i, e) {
+		var otalCar = e.otalCar;
+		var totalPerson = e.totalPerson;
+		var useCar = e.useCar;
+		var usePerson = e.usePerson;
+		
+
+		var tr = "<tr><td>"+
+		totalPerson + "</td><td>" + otalCar + "</td><td>"+usePerson+"</td><td>"+useCar+"</td></tr>";
+		$table.append(tr);
+	});
+	$("input[name=currPage]").val(data.currPage);
+	$("input[name=totalPage]").val(data.totalPage);
+	/* $("#span").html("第" + data.currPage + "页,共" + data.totalPage + "页") */
+};
+    
+    
+    
+</script> 
+    
+    
+    
+    
+    
+    
     <style>
 
         .carA{
@@ -145,7 +189,7 @@
                             <h4 class="tittle-w3-agileits mb-4">资源展示表</h4>
                             <hr>
                             <div class="table-responsive">
-                                <table class="table table-hover">
+                                <table id="table"  class="table table-hover">
                                     <thead>
                                         <tr>
                                             <th>人员数量</th>

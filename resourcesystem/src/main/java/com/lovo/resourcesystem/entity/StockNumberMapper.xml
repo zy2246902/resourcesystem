@@ -4,21 +4,32 @@
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
   
 
-<mapper namespace="com.lovo.resourcesystem.dao.CashStatementDao">
-<resultMap type="cashStatementEntity" id="cashStatementRM">
-		<id property="InventoriesId" column="pk_InventoriesId"></id>
-		<result property="name" column="f_name"/>
-		<result property="phone" column="f_phone"/>
-		<result property="state" column="f_state"/>
-		
+<mapper namespace="com.lovo.resourcesystem.dao.StockNumberDao">
+<resultMap type="stockNumberEntity" id="stockNumberRM">
+		<id property="resourceStocks" column="pk_resourceStocks"></id>
+		<result property="otalCar" column="f_totalCar"/>
+		<result property="totalPerson" column="f_totalPerson"/>
+		<result property="useCar" column="f_useCar"/>
+		<result property="usePerson" column="f_usePerson"/>
 	</resultMap>
 
 
 
 	
-	<select id="cashStatementFinda" resultMap="cashStatementRM">
-		select * from t_cashstatement 
+	<select id="stockNumberFind" resultMap="stockNumberRM">
+		select * from t_stocknumber 
 	</select>
+	
+	
+	
+	<update id="stockNumberCarRevise"  >
+		update t_stocknumber set f_useCar=#{param2}  where pk_resourceStocks=#{param1}
+	</update>
+	
+	
+	<update id="stockNumberPersonRevise"  >
+		update t_stocknumber set f_usePerson=#{param2}  where pk_resourceStocks=#{param1}
+	</update>
 	
 
 	

@@ -20,6 +20,12 @@
 
 
     </script>
+    <%
+	String path = request.getContextPath();
+	String basePath = request.getScheme() + "://" + request.getServerName() + ":" + request.getServerPort()
+			+ path + "/";
+%>
+<base href="<%=basePath%>">
     <style>
 
         .carA{
@@ -38,19 +44,19 @@
 
     <!-- Style-sheets -->
     <!-- Bootstrap Css -->
-    <link href="../css/bootstrap.css" rel="stylesheet" type="text/css" media="all" />
+    <link href="z/css/bootstrap.css" rel="stylesheet" type="text/css" media="all" />
     <!-- Bootstrap Css -->
     <!-- Common Css -->
-    <link href="../css/style.css" rel="stylesheet" type="text/css" media="all" />
+    <link href="z/css/style.css" rel="stylesheet" type="text/css" media="all" />
     <!--// Common Css -->
     <!-- Nav Css -->
-    <link rel="stylesheet" href="../css/style4.css">
+    <link rel="stylesheet" href="z/css/style4.css">
     <!--// Nav Css -->
     <!-- widgets Css -->
-    <link href="../css/widgets.css" rel="stylesheet">
+    <link href="z/css/widgets.css" rel="stylesheet">
     <!-- widgets Css -->
     <!-- Fontawesome Css -->
-    <link href="../css/fontawesome-all.css" rel="stylesheet">
+    <link href="z/css/fontawesome-all.css" rel="stylesheet">
     <!--// Fontawesome Css -->
     <!--// Style-sheets -->
 
@@ -66,7 +72,7 @@
     <nav id="sidebar">
         <div class="sidebar-header">
             <h1>
-                <a href="../hospital.jsp">医院管理系统</a>
+                <a href="z/hospital.jsp">医院管理系统</a>
             </h1>
 
         </div>
@@ -80,13 +86,13 @@
                 </a>
                 <ul class="collapse list-unstyled" id="homeSubmenu">
                     <li>
-                        <a href="../eventMaintenance/eventMaintenance.jsp">事件维护</a>
+                        <a href="z/eventMaintenance/eventMaintenance.jsp">事件维护</a>
                     </li>
 
                 </ul>
             </li>
             <li>
-                <a href="../reportforms/numericalStatement.jsp">
+                <a href="z/reportforms/numericalStatement.jsp">
 
                     统计报表
                 </a>
@@ -100,7 +106,7 @@
                 </a>
                 <ul class="collapse list-unstyled" id="pageSubmenu1">
                     <li>
-                        <a href="../resourcemanagement/resourceDetails.jsp">资源详情</a>
+                        <a href="z/resourcemanagement/resourceDetails.jsp">资源详情</a>
                     </li>
 
                 </ul>
@@ -120,7 +126,7 @@
                 </ul>
             </li>
             <li>
-                <a href="../usermanagement/userManagement.jsp">
+                <a href="z/usermanagement/userManagement.jsp">
 
                     用户管理
                 </a>
@@ -182,7 +188,7 @@
 
 
     <!-- Required common Js -->
-    <script src='../js/jquery-2.2.3.min.js'></script>
+    <script src='z/js/jquery-2.2.3.min.js'></script>
     <!-- //Required common Js -->
 
     <!-- Sidebar-nav Js -->
@@ -213,7 +219,7 @@
     <!-- //dropdown nav -->
 
     <!-- Weather-skycons-icons -->
-    <script src="../js/skycons.js"></script>
+    <script src="z/js/skycons.js"></script>
     <script>
         var icons = new Skycons({
                 "color": "#FFD700"
@@ -247,7 +253,7 @@
     <!--// Weather-skycons-icons -->
 
     <!-- Js for bootstrap working-->
-    <script src="../js/bootstrap.min.js"></script>
+    <script src="z/js/bootstrap.min.js"></script>
     <!-- //Js for bootstrap working -->
 
 </body>

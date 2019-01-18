@@ -87,6 +87,12 @@ public void setTelephone(String telephone) {
 	this.telephone = telephone;
 }
 
+@Override
+public String toString() {
+	return "UserEntity [id=" + id + ", userName=" + userName + ", password=" + password + ", sex=" + sex + ", birthday="
+			+ birthday + ", telephone=" + telephone + "]";
+}
+
 
    
    

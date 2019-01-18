@@ -17,45 +17,87 @@
         function hideURLbar() {
             window.scrollTo(0, 1);
         }
-
-
     </script>
-   <script src="../js/jquery-2.1.4.js"></script> 
+    <%
+	String path = request.getContextPath();
+	String basePath = request.getScheme() + "://" + request.getServerName() + ":" + request.getServerPort()
+			+ path + "/";
+%>
+<base href="<%=basePath%>">
+    
+    
+    
+    
+   <script src="z/js/jquery-2.1.4.js"></script> 
     
      <script type="text/javascript">
- 	$(function() {
+     $(function() {
+    	 var currPage=1;
+     
+    	$.getJSON("CashStatement/CashStatement.lovo",{currPage:currPage},data);
+		$("button").click(function(){
+			var operation = $(this).text();			
 		
-		$.getJSON("../../CashStatement/CashStatement.lovo", {
-			
-		}, findMouseData);
-		
-	
+			if(operation=="查询"){
+				var area=$("select[name=area] option:selected").val();
+				var type=$("select[name=type] option:selected").val();
+				var level=$("select[name=level] option:selected").val();
+				var startDate=$("input[name=startDate]").val();
+				var endDate=$("input[name=endDate]").val();
+				 currPage=1;
+				 var select="查询";
+	        	$.getJSON("CashStatement/CashStatement.lovo",{currPage:currPage},data);
+			}
+			else{
+				currPage = parseInt($("input[name=number]").val());
+				var totalPage = $("#totalPage").text();
+				if (operation == "首页") {
+					
+					currPage = 1;
+				} else if(operation == "上一页"){							
+					currPage = currPage - 1;
+					if(currPage<1){
+						currPage=1;
+					}
+				}
+				if(operation == "下一页"){
+					
+					currPage = currPage + 1;
+					if(currPage>totalPage){
+						currPage=totalPage;
+					}
+				} else if(operation == "尾页"){//尾页
+					
+					currPage = totalPage;
+				}	
+	        	 $.getJSON("CashStatement/CashStatement.lovo",{currPage:currPage},data);
+			}
+		});
 	});
- 
-function findMouseData(data) {
-	var $table = $("#table");
-	$table.empty();
-	var head = "<tr><td>医生姓名</td><td>联系方式</td><td>操作</td></tr>";
-	$table.append(head);
-
-	$.each(data, function(i, e) {
-		var title = e.name;
-		var type = e.phone;
-		
-
-		var tr = "<tr><td>"+
-				 title + "</td><td>" + type + "</td><td>"+"<input type='button' name='shanchu' value='删除'>"+"</td></tr>";
-		$table.append(tr);
-	});
-	$("input[name=currPage]").val(data.currPage);
-	$("input[name=totalPage]").val(data.totalPage);
-	/* $("#span").html("第" + data.currPage + "页,共" + data.totalPage + "页") */
-};
+     function data(data){
+            var $table = $("#table");
+            $table.empty();
+            var head = "<thead><tr><th scope=col>救护人员</th><th scope=col>联系方式</th><th scope=col>操作</th></tr></thead>";
+            $table.append(head);
+            
+            $.each(data.list, function(i, e) {
+    		var eventName = e.name;
+    		var eventNum = e.phone;
+    		
+    		var tr = "<tr><td>"+ eventName +"</td><td>"+ eventNum +"</td></tr>";
+    		
+    		$table.append(tr);
+    		});
+            // pageNum当前页 pages总页数
+            $("input[name=number]").val(data.pageNum);
+            $("#totalPage").text(data.pages);
+     }
 
     
     
     
     </script> 
+    
     <style>
 
         .carA{
@@ -74,19 +116,19 @@ function findMouseData(data) {
 
     <!-- Style-sheets -->
     <!-- Bootstrap Css -->
-    <link href="../css/bootstrap.css" rel="stylesheet" type="text/css" media="all" />
+    <link href="z/css/bootstrap.css" rel="stylesheet" type="text/css" media="all" />
     <!-- Bootstrap Css -->
     <!-- Common Css -->
-    <link href="../css/style.css" rel="stylesheet" type="text/css" media="all" />
+    <link href="z/css/style.css" rel="stylesheet" type="text/css" media="all" />
     <!--// Common Css -->
     <!-- Nav Css -->
-    <link rel="stylesheet" href="../css/style4.css">
+    <link rel="stylesheet" href="z/css/style4.css">
     <!--// Nav Css -->
     <!-- widgets Css -->
-    <link href="../css/widgets.css" rel="stylesheet">
+    <link href="z/css/widgets.css" rel="stylesheet">
     <!-- widgets Css -->
     <!-- Fontawesome Css -->
-    <link href="../css/fontawesome-all.css" rel="stylesheet">
+    <link href="z/css/fontawesome-all.css" rel="stylesheet">
     <!--// Fontawesome Css -->
     <!--// Style-sheets -->
 
@@ -102,7 +144,7 @@ function findMouseData(data) {
     <nav id="sidebar">
         <div class="sidebar-header">
             <h1>
-                <a href="../hospital.jsp">医院管理系统</a>
+                <a href="z/hospital.jsp">医院管理系统</a>
             </h1>
 
         </div>
@@ -116,13 +158,13 @@ function findMouseData(data) {
                 </a>
                 <ul class="collapse list-unstyled" id="homeSubmenu">
                     <li>
-                        <a href="../eventMaintenance/eventMaintenance.jsp">事件维护</a>
+                        <a href="z/eventMaintenance/eventMaintenance.jsp">事件维护</a>
                     </li>
 
                 </ul>
             </li>
             <li>
-                <a href="../reportforms/numericalStatement.jsp">
+                <a href="z/reportforms/numericalStatement.jsp">
 
                     统计报表
                 </a>
@@ -150,13 +192,13 @@ function findMouseData(data) {
                 </a>
                 <ul class="collapse list-unstyled" id="pageSubmenu3">
                     <li>
-                        <a href="../dispatch/dispatchDetails.jsp">派遣详情</a>
+                        <a href="z/dispatch/dispatchDetails.jsp">派遣详情</a>
                     </li>
 
                 </ul>
             </li>
             <li>
-                <a href="../usermanagement/userManagement.jsp">
+                <a href="z/usermanagement/userManagement.jsp">
 
                     用户管理
                 </a>
@@ -193,10 +235,13 @@ function findMouseData(data) {
 
                                     </tbody>
                                 </table>
-								<button type="button" name="#">首页</button>
-                                <button type="button" name="#">上一页</button>
-                                <button type="button" name="#">下一页</button>
-                                <button type="button" name="#">尾页</button>
+								<button type="button" name="number"  id="falest">首页</button>
+                                <button type="button" name="number"  id="falesta">上一页</button>
+                                <button type="button" name="number"  id="falestb">下一页</button>
+                                <button type="button" name="number"  id="falestc">尾页</button>
+                                <span id="span"></span>
+			                     <input type="hidden" name="currPage">
+			 <input type="hidden" name="totalPage">
                             </div>
                         </div>
                     </div>
@@ -204,7 +249,7 @@ function findMouseData(data) {
                     <div class="modal-content">
 
                         <div class="modal-header">
-                            <button  class="carA" type="button"><a href="doctorAdd.jsp" >添加医生</a></button>
+                            <button  class="carA" type="button"><a href="z/resourcemanagement/doctorAdd.jsp" >添加医生</a></button>
 
 
 
@@ -224,7 +269,7 @@ function findMouseData(data) {
 
 
     <!-- Required common Js -->
-    <script src='../js/jquery-2.2.3.min.js'></script>
+    <script src='z/js/jquery-2.2.3.min.js'></script>
     <!-- //Required common Js -->
 
     <!-- Sidebar-nav Js -->
@@ -255,7 +300,7 @@ function findMouseData(data) {
     <!-- //dropdown nav -->
 
     <!-- Weather-skycons-icons -->
-    <script src="../js/skycons.js"></script>
+    <script src="z/js/skycons.js"></script>
     <script>
         var icons = new Skycons({
                 "color": "#FFD700"
@@ -289,7 +334,7 @@ function findMouseData(data) {
     <!--// Weather-skycons-icons -->
 
     <!-- Js for bootstrap working-->
-    <script src="../js/bootstrap.min.js"></script>
+    <script src="z/js/bootstrap.min.js"></script>
     <!-- //Js for bootstrap working -->
 
 </body>

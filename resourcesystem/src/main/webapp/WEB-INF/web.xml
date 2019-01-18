@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-
 <web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	xmlns="http://java.sun.com/xml/ns/javaee"
 	xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_2_3.xsd"
 	id="WebApp_ID" version="2.3">
+
 	<!-- 指定首页 -->
 	<!-- <welcome-file-list> <welcome-file>main.jsp</welcome-file> </welcome-file-list> -->
 	<!-- 指定Spring Bean的配置文件所在目录。默认配置在WEB-INF目录下 -->
@@ -29,17 +29,8 @@
 			<param-value>utf8</param-value>
 		</init-param>
 	</filter>
-	<filter-mapping>
-		<filter-name>OpenSessionInViewFilter</filter-name>
-		<url-pattern>*.action</url-pattern>
-	</filter-mapping>
+
 	
-	<!-- 延迟关闭session -->
-	<filter>
-		<filter-name>OpenSessionInViewFilter</filter-name>
-		<filter-class>org.springframework.orm.hibernate5.support.OpenSessionInViewFilter
-		</filter-class>
-	</filter>
 
 	<!--核心控制器的配置 -->
 	<servlet>
@@ -58,7 +49,7 @@
 
 	<servlet-mapping>
 		<servlet-name>springmvc</servlet-name>
-		<url-pattern>*.action</url-pattern>
+		<url-pattern>*.lovo</url-pattern>
 	</servlet-mapping>
 
 	

@@ -75,6 +75,14 @@ public class StockNumberEntity {
 	public Integer getUsePerson() {
 		return usePerson;
 	}
+	
+
+
+	@Override
+	public String toString() {
+		return "StockNumberEntity [resourceStocks=" + resourceStocks + ", otalCar=" + otalCar + ", totalPerson="
+				+ totalPerson + ", useCar=" + useCar + ", usePerson=" + usePerson + "]";
+	}
 
 
 	public void setUsePerson(Integer usePerson) {

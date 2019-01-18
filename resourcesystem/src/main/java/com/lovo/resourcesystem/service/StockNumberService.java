@@ -10,4 +10,18 @@ public interface StockNumberService {
 	 * @return
 	 */
 	public List<StockNumberEntity> stockNumberFind();
+	
+	/**
+	 * 根据ID修改可用车辆数量
+	 */
+	public void stockNumberCarRevise( Integer resourceStocks, Integer useCar);
+	
+	
+	/**
+	 * 根据ID修改可用人员数量
+	 */
+	public void stockNumberPersonRevise( Integer resourceStocks,Integer usePerson);
+	
 }
+	
+
